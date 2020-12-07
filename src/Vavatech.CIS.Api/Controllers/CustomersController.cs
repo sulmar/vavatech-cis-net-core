@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using Vavatech.CIS.Models.SearchCriterias;
 
 namespace Vavatech.CIS.Api.Controllers
 {
-    [Route("api/customers")]
+    [Route("api/[controller]")]
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
@@ -48,7 +49,7 @@ namespace Vavatech.CIS.Api.Controllers
         }
 
         // GET api/customers/{customerId}
-        [HttpGet("{customerId:int:min(1):max(200)}")]
+        [HttpGet("{customerId:int:min(1):max(200)}", Name = "GetByCustomerId")]
         public IActionResult Get(int customerId)
         {
             var customer = customerService.Get(customerId);
@@ -106,6 +107,81 @@ namespace Vavatech.CIS.Api.Controllers
             var customers = customerService.Get(searchCriteria);
 
             return Ok(customers);
+        }
+
+        // GET api/customers/10/orders
+        //[HttpGet("{customerId}/orders")]
+        //public IActionResult GetOrders(int customerId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        // GET api/customers/10/invoices
+        //[HttpGet("{customerId}/invoices")]
+        //public IActionResult GetInvoices(int customerId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Customer customer)
+        {
+            customerService.Add(customer);
+
+            // return Created($"http://localhost:5000/api/customers/{customer.Id}", customer);
+
+            return CreatedAtRoute("GetByCustomerId", new { customerId = customer.Id }, customer);
+        }
+
+
+        // PUT api/customers/{customerId}
+        [HttpPut("{customerId}")]
+        public IActionResult Put(int customerId, [FromBody] Customer customer)
+        {
+            if (customerId != customer.Id)
+            {
+                return BadRequest();
+            }
+
+            customerService.Update(customer);
+
+            return NoContent();
+        }
+
+        // PATCH api/customers/{customerId}
+        // Content-Type: application/json
+        //[HttpPatch("{customerId}")]
+        //public IActionResult Patch(int customerId, [FromBody] Customer customer)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+
+        // http://jsonpatch.com/
+
+        // PATCH api/customers/{customerId}
+        // Content-Type: application/merge-patch+json
+
+        // dotnet add package Microsoft.AspNetCore.JsonPatch
+        [HttpPatch("{customerId}")]
+        public IActionResult Patch(int customerId, [FromBody] JsonPatchDocument patchDocument)
+        {
+            Customer customer = customerService.Get(customerId);
+
+            if (customer == null)
+                return NotFound();
+
+            patchDocument.ApplyTo(customer);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{customerId}")]
+        public IActionResult Delete(int customerId)
+        {
+            customerService.Remove(customerId);
+
+            return NoContent();
         }
 
     }
