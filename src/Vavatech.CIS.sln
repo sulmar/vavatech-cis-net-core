@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.Models", "Vavatech.CIS.Models\Vavatech.CIS.Models.csproj", "{38392140-5C7E-477D-92F9-90FDF7561B8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38392140-5C7E-477D-92F9-90FDF7561B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38392140-5C7E-477D-92F9-90FDF7561B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38392140-5C7E-477D-92F9-90FDF7561B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38392140-5C7E-477D-92F9-90FDF7561B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44241CB0-C09F-47F0-A7D2-F9939395CB17}
+	EndGlobalSection
+EndGlobal
