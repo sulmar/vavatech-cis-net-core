@@ -9,7 +9,9 @@ namespace Vavatech.CIS.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Gender Gender { get; set; }
-        public decimal Salary { get; set; }
+        public decimal? Salary { get; set; }
         public bool IsRemoved { get; set; }
+
+        public Customer Partner { get; set; }
     }
 }

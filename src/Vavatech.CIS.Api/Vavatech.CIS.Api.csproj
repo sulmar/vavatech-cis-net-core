@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Vavatech.CIS.FakeServices\Vavatech.CIS.FakeServices.csproj" />
     <ProjectReference Include="..\Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj" />
   </ItemGroup>

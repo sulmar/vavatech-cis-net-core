@@ -9,11 +9,14 @@ namespace Vavatech.CIS.FakeServices
 {
     public class FakeCustomerService : ICustomerService
     {
-        private readonly ICollection<Customer> customers;
+        private readonly IList<Customer> customers;
 
         public FakeCustomerService(Faker<Customer> faker)
         {
             customers = faker.Generate(100);
+
+            customers[0].Partner = customers[1];
+            customers[1].Partner = customers[0];
         }
 
         public void Add(Customer customer)
