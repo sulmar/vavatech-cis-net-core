@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
+using Vavatech.CIS.Models.SearchCriterias;
 
 namespace Vavatech.CIS.Api.Controllers
 {
@@ -20,13 +21,13 @@ namespace Vavatech.CIS.Api.Controllers
 
 
         // GET api/customers
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var customers = customerService.Get();
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    var customers = customerService.Get();
 
-            return Ok(customers);
-        }
+        //    return Ok(customers);
+        //}
 
         // GET api/customers/female
         [HttpGet("female")]
@@ -47,10 +48,13 @@ namespace Vavatech.CIS.Api.Controllers
         }
 
         // GET api/customers/{customerId}
-        [HttpGet("{customerId:int:min(1):max(100)}")]
+        [HttpGet("{customerId:int:min(1):max(200)}")]
         public IActionResult Get(int customerId)
         {
             var customer = customerService.Get(customerId);
+
+            if (customer == null)
+                return NotFound();
 
             return Ok(customer);
         }
@@ -80,7 +84,28 @@ namespace Vavatech.CIS.Api.Controllers
         {
             var customer = customerService.GetByPesel(number);
 
+            if (customer == null)
+                return NotFound();
+
             return Ok(customer);
+        }
+
+        // GET api/customers?FirstName=John&From=100&To=200
+        //[HttpGet]
+        //public IActionResult Get(string firstname, decimal? from, decimal? to)
+        //{
+        //    var customers = customerService.Get(firstname, from, to);
+
+        //    return Ok(customers);
+        //}
+
+        // GET api/customers?FirstName=John&From=100&To=200
+        [HttpGet]
+        public IActionResult Get(CustomerSearchCriteria searchCriteria)
+        {
+            var customers = customerService.Get(searchCriteria);
+
+            return Ok(customers);
         }
 
     }

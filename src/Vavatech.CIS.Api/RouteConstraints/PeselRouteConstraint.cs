@@ -26,7 +26,14 @@ namespace Vavatech.CIS.Api.RouteConstraints
             {
                 string number = routeValue.ToString();
 
-                return validator.IsValid(number);
+                try
+                {
+                    return validator.IsValid(number);
+                }
+                catch(FormatException)
+                {
+                    return false;   
+                }
             }
 
             return false;

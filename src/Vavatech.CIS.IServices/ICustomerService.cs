@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vavatech.CIS.Models;
+using Vavatech.CIS.Models.SearchCriterias;
 
 namespace Vavatech.CIS.IServices
 {
@@ -15,6 +16,10 @@ namespace Vavatech.CIS.IServices
         IEnumerable<Customer> Get(Gender gender);
         IEnumerable<Customer> Get(string lastName);
         Customer GetByPesel(string number);
+
+        IEnumerable<Customer> Get(string firstname, decimal? from, decimal? to);
+
+        IEnumerable<Customer> Get(CustomerSearchCriteria searchCriteria);
 
     }
 }

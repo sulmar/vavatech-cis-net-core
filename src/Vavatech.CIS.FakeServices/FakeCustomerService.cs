@@ -4,6 +4,7 @@ using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
 using System.Linq;
 using Bogus;
+using Vavatech.CIS.Models.SearchCriterias;
 
 namespace Vavatech.CIS.FakeServices
 {
@@ -30,7 +31,7 @@ namespace Vavatech.CIS.FakeServices
 
         public IEnumerable<Customer> Get()
         {
-            return customers.OrderBy(c=>c.Id);
+            return customers.OrderBy(c => c.Id);
         }
 
         public Customer Get(int id)
@@ -46,6 +47,34 @@ namespace Vavatech.CIS.FakeServices
         public IEnumerable<Customer> Get(string lastName)
         {
             return customers.Where(c => c.LastName.StartsWith(lastName)).ToList();
+        }
+
+        public IEnumerable<Customer> Get(string firstname, decimal? from, decimal? to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Customer> Get(CustomerSearchCriteria searchCriteria)
+        {
+            IQueryable<Customer> query = customers.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchCriteria.FirstName))
+            {
+                query = query.Where(c => c.FirstName.StartsWith(searchCriteria.FirstName));
+            }
+
+            if (searchCriteria.From.HasValue)
+            {
+                query = query.Where(c => c.Salary >= searchCriteria.From);
+            }
+
+            if (searchCriteria.To.HasValue)
+            {
+                query = query.Where(c => c.Salary <= searchCriteria.To);
+            }
+
+            return query.ToList();
+
         }
 
         public Customer GetByPesel(string number)
