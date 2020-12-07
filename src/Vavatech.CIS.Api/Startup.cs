@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Validators.Polish;
+using Vavatech.CIS.Api.RouteConstraints;
 using Vavatech.CIS.Fakers;
 using Vavatech.CIS.FakeServices;
 using Vavatech.CIS.IServices;
@@ -33,6 +36,11 @@ namespace Vavatech.CIS.Api
         {
             services.AddSingleton<ICustomerService, FakeCustomerService>();
             services.AddSingleton<Faker<Customer>, CustomerFaker>();
+
+            services.AddSingleton<PeselValidator>();
+
+            // Rejestracja w³asnej regu³y tras
+            services.Configure<RouteOptions>(options => options.ConstraintMap.Add("pesel", typeof(PeselRouteConstraint)));
 
             // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
             services.AddControllers().AddNewtonsoftJson(options =>

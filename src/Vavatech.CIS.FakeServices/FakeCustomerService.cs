@@ -43,6 +43,16 @@ namespace Vavatech.CIS.FakeServices
             return customers.Where(c => c.Gender == gender).ToList();
         }
 
+        public IEnumerable<Customer> Get(string lastName)
+        {
+            return customers.Where(c => c.LastName.StartsWith(lastName)).ToList();
+        }
+
+        public Customer GetByPesel(string number)
+        {
+            return customers.SingleOrDefault(c => c.Pesel == number);
+        }
+
         public void Remove(int id)
         {
             customers.Remove(Get(id));

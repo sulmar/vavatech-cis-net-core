@@ -45,5 +45,43 @@ namespace Vavatech.CIS.Api.Controllers
 
             return Ok(customers);
         }
+
+        // GET api/customers/{customerId}
+        [HttpGet("{customerId:int:min(1):max(100)}")]
+        public IActionResult Get(int customerId)
+        {
+            var customer = customerService.Get(customerId);
+
+            return Ok(customer);
+        }
+
+        // GET api/customers/{lastname}
+        [HttpGet("{lastname:alpha:minlength(3)}")]
+        public IActionResult Get(string lastname)
+        {
+            var customers = customerService.Get(lastname);
+
+            return Ok(customers);
+        }
+
+        // GET api/customers/01-434
+        [HttpGet("{postcode:regex(^\\d{{2}}-\\d{{3}}$)}")]
+        public IActionResult GetByPostCode(string postcode)
+        {
+            var customers = customerService.Get(postcode);
+
+            return Ok(customers);
+        }
+
+        // GET api/customers/{pesel}
+
+        [HttpGet("{number:pesel}")]
+        public IActionResult GetByPesel(string number)
+        {
+            var customer = customerService.GetByPesel(number);
+
+            return Ok(customer);
+        }
+
     }
 }

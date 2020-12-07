@@ -13,6 +13,8 @@ namespace Vavatech.CIS.IServices
         void Remove(int id);
 
         IEnumerable<Customer> Get(Gender gender);
+        IEnumerable<Customer> Get(string lastName);
+        Customer GetByPesel(string number);
 
     }
 }
