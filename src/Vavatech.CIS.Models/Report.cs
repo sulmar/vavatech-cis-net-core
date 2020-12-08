@@ -6,6 +6,7 @@ namespace Vavatech.CIS.Models
 {
     public class Report : Base
     {
+        public string Title { get; set; }
         public DateTime CreateDate { get; set; }
         public Period Period { get; set; }
         public Customer Customer { get; set; }

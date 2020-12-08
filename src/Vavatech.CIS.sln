@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Models", "Vavatech.CIS.Models\Vavatech.CIS.Models.csproj", "{38392140-5C7E-477D-92F9-90FDF7561B8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.IServices", "Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj", "{CF868650-65F1-48D3-9766-6EF64A43F3DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.IServices", "Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj", "{CF868650-65F1-48D3-9766-6EF64A43F3DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.FakeServices", "Vavatech.CIS.FakeServices\Vavatech.CIS.FakeServices.csproj", "{B202D7AA-E704-4E00-A7B8-C76A148CB88D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.FakeServices", "Vavatech.CIS.FakeServices\Vavatech.CIS.FakeServices.csproj", "{B202D7AA-E704-4E00-A7B8-C76A148CB88D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.Fakers", "Vavatech.CIS.Fakers\Vavatech.CIS.Fakers.csproj", "{070C80F6-1BDB-4C58-AD9B-2523D6F5C46D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Fakers", "Vavatech.CIS.Fakers\Vavatech.CIS.Fakers.csproj", "{070C80F6-1BDB-4C58-AD9B-2523D6F5C46D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.Api", "Vavatech.CIS.Api\Vavatech.CIS.Api.csproj", "{4094E27A-44E3-499B-B7EC-440F7B29248B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Api", "Vavatech.CIS.Api\Vavatech.CIS.Api.csproj", "{4094E27A-44E3-499B-B7EC-440F7B29248B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.Models.Validators", "Vavatech.CIS.Models.Validators\Vavatech.CIS.Models.Validators.csproj", "{97CD23F7-026D-4786-B6BE-C490D2AE668E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4094E27A-44E3-499B-B7EC-440F7B29248B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4094E27A-44E3-499B-B7EC-440F7B29248B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4094E27A-44E3-499B-B7EC-440F7B29248B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CD23F7-026D-4786-B6BE-C490D2AE668E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CD23F7-026D-4786-B6BE-C490D2AE668E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CD23F7-026D-4786-B6BE-C490D2AE668E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CD23F7-026D-4786-B6BE-C490D2AE668E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

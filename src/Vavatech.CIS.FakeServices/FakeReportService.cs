@@ -17,6 +17,13 @@ namespace Vavatech.CIS.FakeServices
             reports = faker.Generate(10);
         }
 
+        public void Add(Report report)
+        {
+            int lastId = reports.Max(r => r.Id);
+            report.Id = ++lastId;
+            reports.Add(report);
+        }
+
         public IEnumerable<Report> Get(Period period)
         {
             return reports.Where(r => r.CreateDate >= period.From && r.CreateDate <= period.To).ToList();

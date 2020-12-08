@@ -11,5 +11,6 @@ namespace Vavatech.CIS.IServices
         Report Get(int id);
         IEnumerable<Report> GetByCustomer(int customerId);
         Report Get(int customerId, int reportId);
+        void Add(Report report);
     }
 }

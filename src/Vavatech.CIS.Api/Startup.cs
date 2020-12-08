@@ -1,4 +1,6 @@
 using Bogus;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -19,6 +21,7 @@ using Vavatech.CIS.Fakers;
 using Vavatech.CIS.FakeServices;
 using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
+using Vavatech.CIS.Models.Validators;
 
 namespace Vavatech.CIS.Api
 {
@@ -44,6 +47,8 @@ namespace Vavatech.CIS.Api
 
             services.AddSingleton<PeselValidator>();
 
+           
+
             // Rejestracja w³asnej regu³y tras
             services.Configure<RouteOptions>(options => options.ConstraintMap.Add("pesel", typeof(PeselRouteConstraint)));
 
@@ -56,13 +61,21 @@ namespace Vavatech.CIS.Api
             //    options.Quantity = 40;
             //});
 
+            // Rejestracja walidatorów
+            // services.AddTransient<IValidator<Report>, ReportValidator>();
+            // services.AddTransient<IValidator<Customer>, ReportCustomer>();
+
+            // dotnet add package FluentValidation.AspNetCore
             // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
-            services.AddControllers().AddNewtonsoftJson(options =>
+            services.AddControllers()
+                .AddFluentValidation( options => options.RegisterValidatorsFromAssemblyContaining<ReportValidator>())
+                .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());                   // konwersja enum na tekst
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;    // pomijanie wartoœci null
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;  // zapobiega zapêtleniu
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -46,7 +46,7 @@ namespace Vavatech.CIS.Api.Controllers
             return Ok(reports);
         }
 
-        [HttpGet("~/api/customers/{customerId}/reports/{reportId}")]
+        [HttpGet("~/api/customers/{customerId}/reports/{reportId}", Name = "GetReportById")]
         public IActionResult GetByCustomer(int customerId, int reportId)
         {
             var report = reportService.Get(customerId, reportId);
@@ -55,6 +55,18 @@ namespace Vavatech.CIS.Api.Controllers
                 return NotFound();
 
             return Ok(report);
+        }
+
+
+        [HttpPost("~/api/customers/{customerId}/reports")]
+        public IActionResult Post(int customerId, [FromBody] Report report)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            reportService.Add(report);
+
+            return CreatedAtRoute("GetReportById", new { customerId, reportId = report.Id }, report);
         }
 
     }
