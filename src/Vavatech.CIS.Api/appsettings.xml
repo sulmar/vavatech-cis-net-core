@@ -1,0 +1,9 @@
+﻿<configuration>
+	<FakeCustomer>
+		<Quantity>50</Quantity>
+	</FakeCustomer>
+
+	<GatewayApi>
+		<Port>999</Port>
+	</GatewayApi>
+</configuration>

@@ -74,6 +74,8 @@ namespace Vavatech.CIS.Api
             string gatewayAddress = Configuration["GatewayApi:Address"];
             int gatewayPort = int.Parse(Configuration["GatewayApi:Port"]);
 
+            string googleMapSecretKey = Configuration["GoogleMapSecretKey"];
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

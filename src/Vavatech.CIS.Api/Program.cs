@@ -18,6 +18,15 @@ namespace Vavatech.CIS.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    // ASPNETCORE_ENVIRONMENT
+                    string environmentName = hostingContext.HostingEnvironment.EnvironmentName;
+
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                    config.AddXmlFile("appsettings.xml", optional: true, reloadOnChange: true);
+                    config.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
