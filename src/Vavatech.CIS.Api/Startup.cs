@@ -47,6 +47,15 @@ namespace Vavatech.CIS.Api
             // Rejestracja w³asnej regu³y tras
             services.Configure<RouteOptions>(options => options.ConstraintMap.Add("pesel", typeof(PeselRouteConstraint)));
 
+            // Rejestracja opcji z pliku konfiguracyjnego
+            services.Configure<FakeCustomerServiceOptions>(Configuration.GetSection("FakeCustomer"));
+
+            // Rejestracja opcji w kodzie
+            //services.Configure<FakeCustomerServiceOptions>(options =>
+            //{
+            //    options.Quantity = 40;
+            //});
+
             // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
             services.AddControllers().AddNewtonsoftJson(options =>
             {
@@ -59,6 +68,12 @@ namespace Vavatech.CIS.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            string smsApi = Configuration["SmsApiAddress"];
+            int port = int.Parse(Configuration["SmsApiPort"]);
+
+            string gatewayAddress = Configuration["GatewayApi:Address"];
+            int gatewayPort = int.Parse(Configuration["GatewayApi:Port"]);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -5,16 +5,23 @@ using Vavatech.CIS.Models;
 using System.Linq;
 using Bogus;
 using Vavatech.CIS.Models.SearchCriterias;
+using Microsoft.Extensions.Options;
 
 namespace Vavatech.CIS.FakeServices
 {
+    public class FakeCustomerServiceOptions
+    {
+        public int Quantity { get; set; }
+    }
+
     public class FakeCustomerService : ICustomerService
     {
         private readonly IList<Customer> customers;
 
-        public FakeCustomerService(Faker<Customer> faker)
+        // dotnet add package Microsoft.Extensions.Options -v 3.1.10
+        public FakeCustomerService(Faker<Customer> faker, IOptions<FakeCustomerServiceOptions> options)
         {
-            customers = faker.Generate(100);
+            customers = faker.Generate(options.Value.Quantity);
 
             customers[0].Partner = customers[1];
             customers[1].Partner = customers[0];
