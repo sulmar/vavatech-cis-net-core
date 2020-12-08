@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vavatech.CIS.ApiServices\Vavatech.CIS.ApiServices.csproj" />
+    <ProjectReference Include="..\Vavatech.CIS.Fakers\Vavatech.CIS.Fakers.csproj" />
+    <ProjectReference Include="..\Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj" />
+    <ProjectReference Include="..\Vavatech.CIS.Models\Vavatech.CIS.Models.csproj" />
+  </ItemGroup>
+
+</Project>
