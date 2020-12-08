@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 using Vavatech.CIS.Models.ValidationAttributes;
 
 namespace Vavatech.CIS.Models
@@ -19,6 +20,7 @@ namespace Vavatech.CIS.Models
         public decimal? Salary { get; set; }
         public bool IsRemoved { get; set; }
 
+        [XmlIgnore]
         public Customer Partner { get; set; }
     }
 }

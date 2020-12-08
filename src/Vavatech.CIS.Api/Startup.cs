@@ -22,6 +22,7 @@ using Vavatech.CIS.FakeServices;
 using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
 using Vavatech.CIS.Models.Validators;
+using WebApiContrib.Core.Formatter.Csv;
 
 namespace Vavatech.CIS.Api
 {
@@ -67,7 +68,10 @@ namespace Vavatech.CIS.Api
 
             // dotnet add package FluentValidation.AspNetCore
             // dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+            // dotnet add package WebApiContrib.Core.Formatter.Csv
             services.AddControllers()
+                .AddXmlSerializerFormatters()
+                .AddCsvSerializerFormatters()
                 .AddFluentValidation( options => options.RegisterValidatorsFromAssemblyContaining<ReportValidator>())
                 .AddNewtonsoftJson(options =>
             {
