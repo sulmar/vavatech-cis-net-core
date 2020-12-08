@@ -37,6 +37,11 @@ namespace Vavatech.CIS.Api
             services.AddSingleton<ICustomerService, FakeCustomerService>();
             services.AddSingleton<Faker<Customer>, CustomerFaker>();
 
+            services.AddSingleton<IReportService, FakeReportService>();
+            services.AddSingleton<Faker<Report>, ReportFaker>();
+            services.AddSingleton<Faker<ReportDetail>, ReportDetailFaker>();
+            services.AddSingleton<Faker<Period>, PeriodFaker>();
+
             services.AddSingleton<PeselValidator>();
 
             // Rejestracja w³asnej regu³y tras
