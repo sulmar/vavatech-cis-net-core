@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Vavatech.CIS.IServices;
@@ -12,6 +15,8 @@ namespace Vavatech.CIS.Api.Controllers
     public class ReportsController : ControllerBase
     {
         private readonly IReportService reportService;
+
+        private readonly IWebHostEnvironment hostEnvironment;
 
         public ReportsController(IReportService reportService)
         {
@@ -68,6 +73,27 @@ namespace Vavatech.CIS.Api.Controllers
 
             return CreatedAtRoute("GetReportById", new { customerId, reportId = report.Id }, report);
         }
+
+
+        // api/reports/upload
+        [HttpPost("upload")]
+        public IActionResult Post(IFormFile file, [FromServices] IWebHostEnvironment hostEnvironment)
+        {
+            // TODO: process file
+            // MemoryStream stream = new MemoryStream();
+
+            string uploads = Path.Combine(hostEnvironment.ContentRootPath, "uploads");
+            string filename = Path.Combine(uploads, file.FileName);
+
+            using (Stream stream = new FileStream(filename, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            return Accepted();
+        }
+        
+
 
     }
 }
