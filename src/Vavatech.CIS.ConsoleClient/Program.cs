@@ -16,6 +16,8 @@ namespace Vavatech.CIS.ConsoleClient
         static async Task Main(string[] args)
         {
             Console.WriteLine("Hello REST API Client!");
+            
+            // VarTest();
 
             string baseUri = "https://localhost:5001/";
 
@@ -44,6 +46,13 @@ namespace Vavatech.CIS.ConsoleClient
             Console.ReadKey();
 
 
+        }
+
+        private static void VarTest()
+        {
+            var x = new { Imie = "Marcin", Nazwisko = "Sulecki", Salary = 1000 };
+
+            Console.WriteLine(x.Imie);
         }
 
         private static async Task GetReportsTest(IReportServiceAsync reportService)

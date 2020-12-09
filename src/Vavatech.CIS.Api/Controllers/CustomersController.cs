@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace Vavatech.CIS.Api.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService customerService;
+        private readonly ILogger<CustomersController> logger;
 
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService, ILogger<CustomersController> logger)
         {
             this.customerService = customerService;
+            this.logger = logger;
         }
 
 
@@ -37,7 +40,11 @@ namespace Vavatech.CIS.Api.Controllers
         [ProducesResponseType(typeof(IEnumerable<Customer>), StatusCodes.Status200OK)]
         public IActionResult GetFemales()
         {
+            logger.LogInformation("Pobieranie klientów");
+
             var customers = customerService.Get(Gender.Female);
+
+            logger.LogInformation($"Pobrano {customers.Count()} klientów.");
 
             return Ok(customers);
         }
@@ -116,7 +123,7 @@ namespace Vavatech.CIS.Api.Controllers
 
         // GET api/customers?FirstName=John&From=100&To=200
         [HttpGet]
-        public IActionResult Get(CustomerSearchCriteria searchCriteria)
+        public IActionResult Get([FromQuery] CustomerSearchCriteria searchCriteria)
         {
             var customers = customerService.Get(searchCriteria);
 
@@ -143,6 +150,11 @@ namespace Vavatech.CIS.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult Post([FromBody] Customer customer)
         {
+            Customer existCustomer = customerService.GetByPesel(customer.Pesel);
+
+            if (existCustomer != null)
+                ModelState.AddModelError("Pesel", "Użytkownik o podanym numerze pesel już istnieje");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

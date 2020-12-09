@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Fakers", "Vava
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Api", "Vavatech.CIS.Api\Vavatech.CIS.Api.csproj", "{4094E27A-44E3-499B-B7EC-440F7B29248B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.Models.Validators", "Vavatech.CIS.Models.Validators\Vavatech.CIS.Models.Validators.csproj", "{97CD23F7-026D-4786-B6BE-C490D2AE668E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.Models.Validators", "Vavatech.CIS.Models.Validators\Vavatech.CIS.Models.Validators.csproj", "{97CD23F7-026D-4786-B6BE-C490D2AE668E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.ConsoleClient", "Vavatech.CIS.ConsoleClient\Vavatech.CIS.ConsoleClient.csproj", "{C38527BF-AEE9-41F7-9A39-D74AC05BB7EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ConsoleClient", "Vavatech.CIS.ConsoleClient\Vavatech.CIS.ConsoleClient.csproj", "{C38527BF-AEE9-41F7-9A39-D74AC05BB7EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.ApiServices", "Vavatech.CIS.ApiServices\Vavatech.CIS.ApiServices.csproj", "{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ApiServices", "Vavatech.CIS.ApiServices\Vavatech.CIS.ApiServices.csproj", "{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.RawApi", "Vavatech.CIS.RawApi\Vavatech.CIS.RawApi.csproj", "{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
