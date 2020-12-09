@@ -21,5 +21,9 @@
     <ProjectReference Include="..\Vavatech.CIS.Models.Validators\Vavatech.CIS.Models.Validators.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="uploads\" />
+  </ItemGroup>
+
 
 </Project>
