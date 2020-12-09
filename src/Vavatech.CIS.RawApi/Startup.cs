@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Vavatech.CIS.RawApi.Middlewares;
 
 namespace Vavatech.CIS.RawApi
 {
@@ -22,29 +23,34 @@ namespace Vavatech.CIS.RawApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-           // Logger
-           app.Use(async (context, next) =>
-           {
-               logger.LogInformation($"{context.Request.Method} {context.Request.Path}");
+            // Logger
+            //app.Use(async (context, next) =>
+            //{
+            //    logger.LogInformation($"{context.Request.Method} {context.Request.Path}");
 
-               await next();
+            //    await next();
 
-               logger.LogInformation($"{context.Response.StatusCode}");
-           });
+            //    logger.LogInformation($"{context.Response.StatusCode}");
+            //});
+
+            app.UseMiddleware<LoggerMiddleware>();
 
             // Authorization
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Headers.ContainsKey("Authorization"))
-                {
-                    await next();
-                }
-                else
-                {
-                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                }
-            });
+            //app.Use(async (context, next) =>
+            //{
+            //    if (context.Request.Headers.ContainsKey("Authorization"))
+            //    {
+            //        await next();
+            //    }
+            //    else
+            //    {
+            //        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            //    }
+            //});
 
+            app.UseMiddleware<AuthorizationMiddleware>();
+
+            // Customers
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.StartsWithSegments("/api/customers"))
@@ -57,6 +63,8 @@ namespace Vavatech.CIS.RawApi
                 }
             });
 
+
+            // Reports
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.StartsWithSegments("/api/reports"))
