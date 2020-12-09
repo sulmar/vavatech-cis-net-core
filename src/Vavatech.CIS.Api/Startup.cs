@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -120,8 +121,16 @@ namespace Vavatech.CIS.Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/dashboard", async context =>
+                {
+                    await context.Response.WriteAsync("Hello Dashboard!");
+                });
+
                 endpoints.MapControllers();
             });
+
+
+            // dotnet add package NSwag.AspNetCore
 
             // Generowanie dokumentacji OpenAPI w postaci json
             // http://localhost:5000/swagger/v1/swagger.json
