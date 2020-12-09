@@ -92,7 +92,22 @@ namespace Vavatech.CIS.Api.Controllers
 
             return Accepted();
         }
-        
+
+        // api/reports/{reportId}/download
+        [HttpGet("{reportId}/download")]
+        public IActionResult Download(int reportId, [FromServices] IWebHostEnvironment hostEnvironment)
+        {
+            string file = "drafts.pdf";
+
+            string uploads = Path.Combine(hostEnvironment.ContentRootPath, "uploads");
+            string filename = Path.Combine(uploads, file);
+
+            Stream stream = new FileStream(filename, FileMode.Open);
+            return File(stream, "application/pdf", file);
+
+            //  return File(stream, "application/octet-stream", "arkusz1.xsls");
+        }
+
 
 
     }
