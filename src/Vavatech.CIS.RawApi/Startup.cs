@@ -33,7 +33,9 @@ namespace Vavatech.CIS.RawApi
             //    logger.LogInformation($"{context.Response.StatusCode}");
             //});
 
-            app.UseMiddleware<LoggerMiddleware>();
+            // app.UseMiddleware<LoggerMiddleware>();
+
+            app.UseLogger();
 
             // Authorization
             //app.Use(async (context, next) =>
@@ -48,7 +50,9 @@ namespace Vavatech.CIS.RawApi
             //    }
             //});
 
-            app.UseMiddleware<AuthorizationMiddleware>();
+            // app.UseMiddleware<AuthorizationMiddleware>();
+
+            app.UseMyAuthorization();
 
             // Customers
             app.Use(async (context, next) =>
