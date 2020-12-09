@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Vavatech.CIS.Models.SearchCriterias;
 
 namespace Vavatech.CIS.Api.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class CustomersController : ControllerBase
     {
@@ -32,6 +34,7 @@ namespace Vavatech.CIS.Api.Controllers
 
         // GET api/customers/female
         [HttpGet("female")]
+        [ProducesResponseType(typeof(IEnumerable<Customer>), StatusCodes.Status200OK)]
         public IActionResult GetFemales()
         {
             var customers = customerService.Get(Gender.Female);
@@ -41,6 +44,7 @@ namespace Vavatech.CIS.Api.Controllers
 
         // GET api/customers/male
         [HttpGet("male")]
+        [ProducesResponseType(typeof(IEnumerable<Customer>), StatusCodes.Status200OK)]
         public IActionResult GetMales()
         {
             var customers = customerService.Get(Gender.Male);
@@ -50,6 +54,8 @@ namespace Vavatech.CIS.Api.Controllers
 
         // GET api/customers/{customerId}
         [HttpGet("{customerId:int:min(1):max(200)}", Name = "GetByCustomerId")]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int customerId)
         {
             var customer = customerService.Get(customerId);
@@ -81,6 +87,9 @@ namespace Vavatech.CIS.Api.Controllers
         // GET api/customers/{pesel}
 
         [HttpGet("{number:pesel}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public IActionResult GetByPesel(string number)
         {
             var customer = customerService.GetByPesel(number);
@@ -124,6 +133,9 @@ namespace Vavatech.CIS.Api.Controllers
         //}
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public IActionResult Post([FromBody] Customer customer)
         {
             if (!ModelState.IsValid)
@@ -141,6 +153,9 @@ namespace Vavatech.CIS.Api.Controllers
 
         // PUT api/customers/{customerId}
         [HttpPut("{customerId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
         public IActionResult Put(int customerId, [FromBody] Customer customer)
         {
             if (customerId != customer.Id)
@@ -169,6 +184,9 @@ namespace Vavatech.CIS.Api.Controllers
 
         // dotnet add package Microsoft.AspNetCore.JsonPatch
         [HttpPatch("{customerId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public IActionResult Patch(int customerId, [FromBody] JsonPatchDocument patchDocument)
         {
             Customer customer = customerService.Get(customerId);
@@ -182,6 +200,8 @@ namespace Vavatech.CIS.Api.Controllers
         }
 
         [HttpDelete("{customerId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesDefaultResponseType]
         public IActionResult Delete(int customerId)
         {
             customerService.Remove(customerId);

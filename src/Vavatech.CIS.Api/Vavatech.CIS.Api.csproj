@@ -3,12 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>0637d613-6ed2-4bf4-8932-afcf701ebbf5</UserSecretsId>
+	 <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.9.4" />
     <PackageReference Include="PolishValidators" Version="1.0.0" />
     <PackageReference Include="WebApiContrib.Core.Formatter.Csv" Version="3.0.2" />
   </ItemGroup>
