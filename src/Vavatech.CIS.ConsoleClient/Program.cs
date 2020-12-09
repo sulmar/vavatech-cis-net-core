@@ -11,6 +11,8 @@ namespace Vavatech.CIS.ConsoleClient
 {
     class Program
     {
+     
+
         static async Task Main(string[] args)
         {
             Console.WriteLine("Hello REST API Client!");
@@ -20,7 +22,10 @@ namespace Vavatech.CIS.ConsoleClient
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(baseUri);
 
+            IReportServiceAsync reportService = new ApiReportService(client);
             ICustomerServiceAsync customerService = new ApiCustomerService(client);
+
+            await GetReportsTest(reportService);
 
             await GetCustomersTest(customerService);
 
@@ -30,6 +35,10 @@ namespace Vavatech.CIS.ConsoleClient
 
             await customerService.RemoveAsync(10);
 
+            // TODO: pobrać raporty na podany zakres dat dla klienta na podst. PESEL
+
+
+            // TODO: zmodyfikować tytuł raportu
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
@@ -37,6 +46,18 @@ namespace Vavatech.CIS.ConsoleClient
 
         }
 
+        private static async Task GetReportsTest(IReportServiceAsync reportService)
+        {
+            Console.Write("Podaj datę początkową: ");
+            DateTime from = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Podaj datę końcową: ");
+            DateTime to = DateTime.Parse(Console.ReadLine());
+
+            Period period = new Period { From = from, To = to };
+
+            await reportService.GetAsync(period);
+        }
 
 
         private static async Task AddCustomerTest(ICustomerServiceAsync customerService)
