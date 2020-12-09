@@ -86,6 +86,11 @@ namespace Vavatech.CIS.Api.Controllers
 
         // GET api/customers/{pesel}
 
+        /// <summary>
+        /// Pobiera klienta wg PESEL
+        /// </summary>
+        /// <param name="number">Numer w formacie PESEL</param>
+        /// <returns>Klient</returns>
         [HttpGet("{number:pesel}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
