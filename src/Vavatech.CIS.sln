@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ApiServices", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.RawApi", "Vavatech.CIS.RawApi\Vavatech.CIS.RawApi.csproj", "{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.EndpointsApi", "Vavatech.CIS.EndpointsApi\Vavatech.CIS.EndpointsApi.csproj", "{4FDF179D-756E-4A92-83CC-4B81283C01EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
