@@ -19,7 +19,15 @@ namespace Vavatech.CIS.Models.ValidationAttributes
 
         public override bool IsValid(object value)
         {
-            return peselValidator.IsValid(value.ToString());
+            try
+            {
+                return peselValidator.IsValid(value.ToString());
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
+
     }
 }
