@@ -23,13 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.RawApi", "Vava
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.EndpointsApi", "Vavatech.CIS.EndpointsApi\Vavatech.CIS.EndpointsApi.csproj", "{4FDF179D-756E-4A92-83CC-4B81283C01EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.SignalR", "Vavatech.CIS.SignalR\Vavatech.CIS.SignalR.csproj", "{14690187-1CB7-4226-B08A-F96AD01FB129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.SignalR", "Vavatech.CIS.SignalR\Vavatech.CIS.SignalR.csproj", "{14690187-1CB7-4226-B08A-F96AD01FB129}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.SenderConsoleClient", "Vavatech.CIS.SenderConsoleClient\Vavatech.CIS.SenderConsoleClient.csproj", "{1DC75A34-EF68-491D-84D9-99A966FC6A48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.SenderConsoleClient", "Vavatech.CIS.SenderConsoleClient\Vavatech.CIS.SenderConsoleClient.csproj", "{1DC75A34-EF68-491D-84D9-99A966FC6A48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.ReceiverConsoleClient", "Vavatech.CIS.ReceiverConsoleClient\Vavatech.CIS.ReceiverConsoleClient.csproj", "{A2C90EAA-5056-4D60-9987-01F19B5A063A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ReceiverConsoleClient", "Vavatech.CIS.ReceiverConsoleClient\Vavatech.CIS.ReceiverConsoleClient.csproj", "{A2C90EAA-5056-4D60-9987-01F19B5A063A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.FileService", "Vavatech.CIS.FileService\Vavatech.CIS.FileService.csproj", "{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.FileService", "Vavatech.CIS.FileService\Vavatech.CIS.FileService.csproj", "{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.FileWorkerService", "Vavatech.CIS.FileWorkerService\Vavatech.CIS.FileWorkerService.csproj", "{972AFEA8-5014-4BF3-B9F9-0DE5ECD607CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972AFEA8-5014-4BF3-B9F9-0DE5ECD607CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972AFEA8-5014-4BF3-B9F9-0DE5ECD607CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972AFEA8-5014-4BF3-B9F9-0DE5ECD607CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972AFEA8-5014-4BF3-B9F9-0DE5ECD607CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
