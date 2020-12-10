@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.SenderConsoleC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.ReceiverConsoleClient", "Vavatech.CIS.ReceiverConsoleClient\Vavatech.CIS.ReceiverConsoleClient.csproj", "{A2C90EAA-5056-4D60-9987-01F19B5A063A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.FileService", "Vavatech.CIS.FileService\Vavatech.CIS.FileService.csproj", "{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7D283E-D828-4BCB-9561-8BAF0D4D93FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
