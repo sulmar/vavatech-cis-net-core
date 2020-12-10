@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Validators.Polish;
+using Vavatech.CIS.Api.Middlewares;
 using Vavatech.CIS.Api.RouteConstraints;
 using Vavatech.CIS.Fakers;
 using Vavatech.CIS.FakeServices;
@@ -118,6 +119,9 @@ namespace Vavatech.CIS.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+
+            app.UseMiddleware<LimitRequestMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
