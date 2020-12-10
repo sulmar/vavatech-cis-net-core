@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Vavatech.CIS.FileWorkerService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
