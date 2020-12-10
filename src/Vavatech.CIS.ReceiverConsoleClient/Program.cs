@@ -20,7 +20,38 @@ namespace Vavatech.CIS.ReceiverConsoleClient
 
             HubConnection connection = new HubConnectionBuilder()
                 .WithUrl(url)
+                .WithAutomaticReconnect(new[] { TimeSpan.Zero, TimeSpan.FromSeconds(30) })
                 .Build();
+
+            connection.Reconnecting += error =>
+            {
+                if (connection.State == HubConnectionState.Reconnecting)
+                {
+                    Console.WriteLine("Reconnecting...");
+                }
+
+                return Task.CompletedTask;
+            };
+
+            connection.Reconnected += error =>
+            {
+                if (connection.State == HubConnectionState.Connected)
+                {
+                    Console.WriteLine("Reconnected.");
+                }
+
+                return Task.CompletedTask;
+            };
+
+            connection.Closed += error =>
+            {
+                if (connection.State == HubConnectionState.Disconnected)
+                {
+                    Console.WriteLine("Utracono połączenie.");
+                }
+
+                return Task.CompletedTask;
+            };
 
             connection.On<Customer>("YouHaveGotMessage",
                customer => Console.WriteLine($"Received {customer.FirstName} {customer.LastName}"));

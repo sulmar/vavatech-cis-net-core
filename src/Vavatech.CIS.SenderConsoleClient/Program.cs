@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using Vavatech.CIS.Fakers;
+using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
 
 namespace Vavatech.CIS.SenderConsoleClient
@@ -25,10 +26,13 @@ namespace Vavatech.CIS.SenderConsoleClient
                 .WithUrl(url)
                 .Build();
 
-            connection.On<Customer>("YouHaveGotMessage",
+            // HubConnection<ICustomerServer> 
+            // connection.OnYouHaveGotMessage(customer => => Console.WriteLine($"Received {customer.FirstName} {customer.LastName}"));
+
+            connection.On<Customer>(nameof(ICustomerClient.YouHaveGotMessage),
                customer => Console.WriteLine($"Received {customer.FirstName} {customer.LastName}"));
 
-            connection.On("Pong", 
+            connection.On(nameof(ICustomerClient.Pong), 
                 () => Console.WriteLine("Pong"));
 
             Console.WriteLine("Connecting...");
@@ -47,9 +51,9 @@ namespace Vavatech.CIS.SenderConsoleClient
             foreach (var customer in customers)
             {
                 Console.WriteLine($"Send {customer.FirstName} {customer.LastName}");
-                // await connection.SendAsync("SendCustomerAdded", customer);
+                await connection.SendAsync(nameof(ICustomerServer.SendCustomerAdded), customer);
 
-                await connection.SendAsync("SendCustomerAddedToGroup", customer, groupName);
+                // await connection.SendAsync("SendCustomerAddedToGroup", customer, groupName);
 
                 await Task.Delay(TimeSpan.FromMilliseconds(100));
             }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj" />
     <ProjectReference Include="..\Vavatech.CIS.Models\Vavatech.CIS.Models.csproj" />
   </ItemGroup>
 

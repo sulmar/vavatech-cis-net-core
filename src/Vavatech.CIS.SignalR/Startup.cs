@@ -32,7 +32,7 @@ namespace Vavatech.CIS.SignalR
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<CustomersHub>("/signalr/customers");
+                endpoints.MapHub<StrongTypedCustomersHub>("/signalr/customers");
 
                 endpoints.MapGet("/", async context =>
                 {
