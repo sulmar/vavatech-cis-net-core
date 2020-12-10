@@ -19,9 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ConsoleClient"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.ApiServices", "Vavatech.CIS.ApiServices\Vavatech.CIS.ApiServices.csproj", "{D457EEE4-FB31-41E2-BD7B-5BF1FE572D6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.RawApi", "Vavatech.CIS.RawApi\Vavatech.CIS.RawApi.csproj", "{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.RawApi", "Vavatech.CIS.RawApi\Vavatech.CIS.RawApi.csproj", "{7D0DB943-D81A-49B1-9E57-C477E00D4AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.EndpointsApi", "Vavatech.CIS.EndpointsApi\Vavatech.CIS.EndpointsApi.csproj", "{4FDF179D-756E-4A92-83CC-4B81283C01EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vavatech.CIS.EndpointsApi", "Vavatech.CIS.EndpointsApi\Vavatech.CIS.EndpointsApi.csproj", "{4FDF179D-756E-4A92-83CC-4B81283C01EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.SignalR", "Vavatech.CIS.SignalR\Vavatech.CIS.SignalR.csproj", "{14690187-1CB7-4226-B08A-F96AD01FB129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.SenderConsoleClient", "Vavatech.CIS.SenderConsoleClient\Vavatech.CIS.SenderConsoleClient.csproj", "{1DC75A34-EF68-491D-84D9-99A966FC6A48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vavatech.CIS.ReceiverConsoleClient", "Vavatech.CIS.ReceiverConsoleClient\Vavatech.CIS.ReceiverConsoleClient.csproj", "{A2C90EAA-5056-4D60-9987-01F19B5A063A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FDF179D-756E-4A92-83CC-4B81283C01EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14690187-1CB7-4226-B08A-F96AD01FB129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14690187-1CB7-4226-B08A-F96AD01FB129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14690187-1CB7-4226-B08A-F96AD01FB129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14690187-1CB7-4226-B08A-F96AD01FB129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC75A34-EF68-491D-84D9-99A966FC6A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC75A34-EF68-491D-84D9-99A966FC6A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC75A34-EF68-491D-84D9-99A966FC6A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC75A34-EF68-491D-84D9-99A966FC6A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C90EAA-5056-4D60-9987-01F19B5A063A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
