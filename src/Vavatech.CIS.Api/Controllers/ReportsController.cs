@@ -6,12 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Vavatech.CIS.IServices;
 using Vavatech.CIS.Models;
 
 namespace Vavatech.CIS.Api.Controllers
 {
+    [Authorize(Roles="user, developer")]
     [Route("api/[controller]")]
     public class ReportsController : ControllerBase
     {
@@ -24,7 +26,6 @@ namespace Vavatech.CIS.Api.Controllers
             this.reportService = reportService;
         }
 
-        [Authorize]
         [HttpGet("{reportId}")]
         public IActionResult Get(int reportId)
         {
@@ -32,6 +33,14 @@ namespace Vavatech.CIS.Api.Controllers
             {
                 return Unauthorized();
             }
+
+            if (User.IsInRole("Developer"))
+            {
+
+            }
+
+            Claim emailClaim = User.FindFirst(c => c.Type == ClaimTypes.Email);
+            string email = emailClaim.Value;
 
             Report report = reportService.Get(reportId);
 
@@ -41,10 +50,12 @@ namespace Vavatech.CIS.Api.Controllers
             return Ok(report);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Get(Period period)
         {
+            
+            
             var reports = reportService.Get(period);
 
             return Ok(reports);

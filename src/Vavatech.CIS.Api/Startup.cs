@@ -99,9 +99,9 @@ namespace Vavatech.CIS.Api
             });
 
 
-            services.AddAuthentication("ApiKey")
+            services.AddAuthentication("Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null)
-                .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
+             //   .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
                 ;
 
 
