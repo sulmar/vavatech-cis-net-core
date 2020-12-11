@@ -16,12 +16,15 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Validators.Polish;
 using Vavatech.CIS.Api.Identity;
 using Vavatech.CIS.Api.Middlewares;
 using Vavatech.CIS.Api.RouteConstraints;
+using Vavatech.CIS.DbServices;
 using Vavatech.CIS.Fakers;
 using Vavatech.CIS.FakeServices;
 using Vavatech.CIS.IServices;
@@ -43,7 +46,16 @@ namespace Vavatech.CIS.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ICustomerService, FakeCustomerService>();
+            // services.AddSingleton<ICustomerService, FakeCustomerService>();
+
+            string connectionString = Configuration.GetConnectionString("CISConnectionString");
+
+            // dotnet add package Microsoft.Data.SqlClient
+
+            services.AddScoped<IDbConnection>(options => new SqlConnection(connectionString));
+
+            services.AddScoped<ICustomerService, DbCustomerService>();
+
             services.AddSingleton<Faker<Customer>, CustomerFaker>();
 
             services.AddSingleton<IReportService, FakeReportService>();
@@ -51,7 +63,7 @@ namespace Vavatech.CIS.Api
             services.AddSingleton<Faker<ReportDetail>, ReportDetailFaker>();
             services.AddSingleton<Faker<Period>, PeriodFaker>();
 
-            services.AddSingleton<IServices.IAuthorizationService, AuthorizationService>();
+            services.AddScoped<IServices.IAuthorizationService, AuthorizationService>();
             services.AddSingleton<IApiKeyService, FakeApiKeyService>();
 
             services.AddSingleton<PeselValidator>();

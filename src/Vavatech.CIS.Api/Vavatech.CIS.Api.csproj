@@ -13,10 +13,12 @@
     <PackageReference Include="NSwag.AspNetCore" Version="13.9.4" />
     <PackageReference Include="PolishValidators" Version="1.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="WebApiContrib.Core.Formatter.Csv" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Vavatech.CIS.DbServices\Vavatech.CIS.DbServices.csproj" />
     <ProjectReference Include="..\Vavatech.CIS.FakeServices\Vavatech.CIS.FakeServices.csproj" />
     <ProjectReference Include="..\Vavatech.CIS.IServices\Vavatech.CIS.IServices.csproj" />
     <ProjectReference Include="..\Vavatech.CIS.Models.Validators\Vavatech.CIS.Models.Validators.csproj" />
