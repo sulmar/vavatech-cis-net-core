@@ -38,9 +38,9 @@ namespace Vavatech.CIS.Api.Identity
                 return AuthenticateResult.Fail("Missing X-API-KEY header");
             }
 
-            var apiKey = Request.Headers[apiKey];
+            string key = Request.Headers[apiKey];
 
-            if (!apiKeyService.TryAuthorize(apiKey, out Customer customer))
+            if (!apiKeyService.TryAuthorize(key, out Customer customer))
             {
                 return AuthenticateResult.Fail("Invalid api key");
             }
