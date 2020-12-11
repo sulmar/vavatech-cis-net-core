@@ -2,6 +2,7 @@ using Bogus;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -50,12 +51,12 @@ namespace Vavatech.CIS.Api
             services.AddSingleton<Faker<ReportDetail>, ReportDetailFaker>();
             services.AddSingleton<Faker<Period>, PeriodFaker>();
 
-            services.AddSingleton<IAuthorizationService, AuthorizationService>();
+            services.AddSingleton<IServices.IAuthorizationService, AuthorizationService>();
             services.AddSingleton<IApiKeyService, FakeApiKeyService>();
 
             services.AddSingleton<PeselValidator>();
 
-           
+
 
             // Rejestracja w³asnej regu³y tras
             services.Configure<RouteOptions>(options => options.ConstraintMap.Add("pesel", typeof(PeselRouteConstraint)));
@@ -79,7 +80,7 @@ namespace Vavatech.CIS.Api
             services.AddControllers()
                 .AddXmlSerializerFormatters()
                 .AddCsvSerializerFormatters()
-                .AddFluentValidation( options => options.RegisterValidatorsFromAssemblyContaining<ReportValidator>())
+                .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<ReportValidator>())
                 .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());                   // konwersja enum na tekst
@@ -101,8 +102,23 @@ namespace Vavatech.CIS.Api
 
             services.AddAuthentication("Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null)
-             //   .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
+                //   .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
                 ;
+
+            // Rejestracja uchwytu autoryzacji
+            services.AddSingleton<IAuthorizationHandler, GenderHandler>();
+
+            // Rejestracja polityk (policies)
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Szefowa", policy =>
+                {
+                    policy.Requirements.Add(new GenderRequirement(Gender.Female));
+                    policy.RequireRole("Boss");
+                });
+
+                options.AddPolicy("Mezczyna", policy => policy.Requirements.Add(new GenderRequirement(Gender.Male)));
+            });
 
 
         }

@@ -67,7 +67,9 @@ namespace Vavatech.CIS.Api.Identity
             identity.AddClaim(new Claim("Pesel", customer.Pesel));
             identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
             identity.AddClaim(new Claim(ClaimTypes.Role, "trainer"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "Boss"));
             identity.AddClaim(new Claim(ClaimTypes.Email, customer.Email));
+            identity.AddClaim(new Claim(ClaimTypes.Gender, customer.Gender.ToString()));
 
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 

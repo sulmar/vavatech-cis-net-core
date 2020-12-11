@@ -13,7 +13,7 @@ using Vavatech.CIS.Models;
 
 namespace Vavatech.CIS.Api.Controllers
 {
-    [Authorize(Roles="user, developer")]
+    [Authorize]
     [Route("api/[controller]")]
     public class ReportsController : ControllerBase
     {
@@ -26,6 +26,8 @@ namespace Vavatech.CIS.Api.Controllers
             this.reportService = reportService;
         }
 
+
+        [Authorize(Policy = "Szefowa")]
         [HttpGet("{reportId}")]
         public IActionResult Get(int reportId)
         {
