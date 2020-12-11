@@ -13,13 +13,18 @@ namespace Vavatech.CIS.Fakers
     {
         public CustomerFaker()
         {
+            UseSeed(1);
+            StrictMode(true);
             RuleFor(p => p.Id, f => f.IndexFaker);
             RuleFor(p => p.FirstName, f => f.Person.FirstName);
             RuleFor(p => p.LastName, f => f.Person.LastName);
             RuleFor(p => p.Pesel, f => f.Person.Pesel());
             RuleFor(p => p.Gender, f => (Gender) f.Person.Gender);
+            RuleFor(p => p.Username, f => f.Person.UserName);
+            RuleFor(p => p.HashedPassword, f => "12345");
             RuleFor(p => p.Salary, f =>  Math.Round( f.Random.Decimal(100, 1000), 0).OrNull(f, 0.7f));
             RuleFor(p => p.IsRemoved, f => f.Random.Bool(0.2f));
+            Ignore(p => p.Partner);
         }
     }
 }

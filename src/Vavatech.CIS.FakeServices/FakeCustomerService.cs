@@ -89,6 +89,11 @@ namespace Vavatech.CIS.FakeServices
             return customers.SingleOrDefault(c => c.Pesel == number);
         }
 
+        public Customer GetByUsername(string username)
+        {
+            return customers.SingleOrDefault(c => c.Username == username);
+        }
+
         public void Remove(int id)
         {
             customers.Remove(Get(id));

@@ -20,6 +20,7 @@ namespace Vavatech.CIS.IServices
         IEnumerable<Customer> Get(string firstname, decimal? from, decimal? to);
 
         IEnumerable<Customer> Get(CustomerSearchCriteria searchCriteria);
+        Customer GetByUsername(string username);
 
     }
 }

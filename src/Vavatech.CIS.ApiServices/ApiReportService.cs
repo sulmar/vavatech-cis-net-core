@@ -22,7 +22,16 @@ namespace Vavatech.CIS.ApiServices
         {
             string url = $"api/reports?from={period.From:yyyy-MM-dd}&to={period.To:yyyy-MM-dd}";
 
+            string username = "Justin_Konopelski43";
+            string password = "12345";
+
+            string credentials = $"{username}:{password}";
+
+            string auth = Convert.ToBase64String(Encoding.UTF8.GetBytes(credentials));
+
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Authorization", $"Basic {auth}");
+
             var response = await client.GetStringAsync(url);
 
             var reports = JsonConvert.DeserializeObject<IEnumerable<Report>>(response);

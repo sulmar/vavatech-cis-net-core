@@ -14,6 +14,8 @@ namespace Vavatech.CIS.Models
         [Required, StringLength(50, MinimumLength = 2)]
         public string LastName { get; set; }
         public Gender Gender { get; set; }
+        public string Username { get; set; }
+        public string HashedPassword { get; set; }
 
         [Pesel, Required, StringLength(11, MinimumLength = 11)]
         public string Pesel { get; set; }

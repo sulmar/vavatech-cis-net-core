@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,10 +24,15 @@ namespace Vavatech.CIS.Api.Controllers
             this.reportService = reportService;
         }
 
-
+        [Authorize]
         [HttpGet("{reportId}")]
         public IActionResult Get(int reportId)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             Report report = reportService.Get(reportId);
 
             if (report == null)
@@ -35,6 +41,7 @@ namespace Vavatech.CIS.Api.Controllers
             return Ok(report);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get(Period period)
         {
