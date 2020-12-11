@@ -148,7 +148,7 @@ namespace Vavatech.CIS.Api.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public IActionResult Post([FromBody] Customer customer)
+        public IActionResult Post([FromBody] Customer customer, [FromServices] IMessageService messageService)
         {
             Customer existCustomer = customerService.GetByPesel(customer.Pesel);
 
@@ -161,6 +161,9 @@ namespace Vavatech.CIS.Api.Controllers
             }
 
             customerService.Add(customer);
+
+            messageService = new OperatorSmsMessageService();
+            messageService.Send($"{customer.FirstName} was created.");
 
             // return Created($"http://localhost:5000/api/customers/{customer.Id}", customer);
 
