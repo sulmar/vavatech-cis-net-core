@@ -40,10 +40,18 @@ insert into dbo.Reports values('Raport 2', GETDATE(), GETdate(), Getdate(), 1)
 insert into dbo.Reports values('Raport 3', GETDATE(), GETdate(), Getdate(), 2)
 
 
+go
+
+create or alter procedure GetReportByCustomerId(@customerId int)
+as 
 
 select ReportId, Title, CreateDate, PeriodFrom, PeriodTo, c.*
 from dbo.Reports as r inner join dbo.Customers as c
 	on r.CustomerId = c.CustomerId
+
+	go
+
+	exec GetReportByCustomerId 1
 
 
 

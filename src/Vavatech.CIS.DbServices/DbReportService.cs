@@ -28,6 +28,7 @@ namespace Vavatech.CIS.DbServices
             throw new NotImplementedException();
         }
 
+
         public Report Get(int id)
         {
             string sql = @"select ReportId, Title, CreateDate, PeriodFrom, PeriodTo, c.CustomerId, c.*
@@ -48,12 +49,35 @@ namespace Vavatech.CIS.DbServices
             return reports.SingleOrDefault();
         }
 
+      
+
         public Report Get(int customerId, int reportId)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Report> GetByCustomer(int customerId)
+        {
+            string procedure = @"GetReportByCustomerId";
+
+            var reports = connection.Query<Report, Customer, Report>(procedure,
+                (report, customer) =>
+                {
+                    report.Customer = customer;
+
+                    return report;
+                },
+                param: new { @CustomerId = customerId },
+                splitOn: "CustomerId",
+                commandType: CommandType.StoredProcedure
+                );
+
+            return reports;
+
+  
+        }
+
+        public IEnumerable<Report> GetByCustomer2(int customerId)
         {
             string sql = @"select ReportId, Title, CreateDate, PeriodFrom, PeriodTo, c.CustomerId, c.*
                             from dbo.Reports as r inner join dbo.Customers as c on r.CustomerId = c.CustomerId
@@ -72,7 +96,7 @@ namespace Vavatech.CIS.DbServices
 
             return reports;
 
-  
+
         }
     }
 }
