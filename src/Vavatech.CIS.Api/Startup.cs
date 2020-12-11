@@ -58,7 +58,7 @@ namespace Vavatech.CIS.Api
 
             services.AddSingleton<Faker<Customer>, CustomerFaker>();
 
-            services.AddSingleton<IReportService, FakeReportService>();
+            services.AddScoped<IReportService, DbReportService>();
             services.AddSingleton<Faker<Report>, ReportFaker>();
             services.AddSingleton<Faker<ReportDetail>, ReportDetailFaker>();
             services.AddSingleton<Faker<Period>, PeriodFaker>();

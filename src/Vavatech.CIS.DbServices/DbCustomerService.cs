@@ -187,6 +187,9 @@ namespace Vavatech.CIS.DbServices
             throw new NotImplementedException();
         }
 
+
+        // SELECT ReportId, Title, CustomerId, FirstName, LastName FROM Reports INNER JOIN Customers ON Reports.CustomerId = Customers.CustomerId
+
         public Customer GetByUsername(string username)
         {
             string sql = @"SELECT 
