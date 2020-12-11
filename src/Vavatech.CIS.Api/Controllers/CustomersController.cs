@@ -162,7 +162,6 @@ namespace Vavatech.CIS.Api.Controllers
 
             customerService.Add(customer);
 
-            messageService = new OperatorSmsMessageService();
             messageService.Send($"{customer.FirstName} was created.");
 
             // return Created($"http://localhost:5000/api/customers/{customer.Id}", customer);
